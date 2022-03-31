@@ -6,11 +6,12 @@ const Blog = require('./node_modules/Models/Blog');
 var app = express();
 
 // connect to mondoDB
-const dbURI = "mongodb+srv://jiggl3z:FlowerTra1n@nodeproj.esegr.mongodb.net/NodeProj?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://<username>:<pwd>@nodeproj.esegr.mongodb.net/NodeProj?retryWrites=true&w=majority";
 mongoose.connect(dbURI)
     .then ((result) => app.listen(3000))
     .catch((err) => console.log(err));
 
+//create a new Blog entry
 app.get('/add-blog', (req,res) => {
     const blog = new Blog({
         title: 'New Blog',
@@ -27,6 +28,7 @@ app.get('/add-blog', (req,res) => {
     })
 });
 
+//To display all entries
 app.get('/all-blogs',(req,res) =>{
     Blog.find()
     .then((result) => {
@@ -36,7 +38,9 @@ app.get('/all-blogs',(req,res) =>{
         console.log(err);
     })
 })
-    app.get('/single-blog', (req,res) =>{
+
+//To find a particular entry
+app.get('/single-blog', (req,res) =>{
         Blog.findById('622edcb3dfd12adc43e394f8')
         .then((result) => {
             res.send(result)
