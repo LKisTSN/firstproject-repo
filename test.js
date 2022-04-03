@@ -6,7 +6,7 @@ const Blog = require('./node_modules/Models/Blog');
 var app = express();
 
 // connect to mondoDB
-const dbURI = "mongodb+srv://<username>:<pwd>@nodeproj.esegr.mongodb.net/NodeProj?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://jiggl3z:FlowerTra1n@nodeproj.esegr.mongodb.net/NodeProj?retryWrites=true&w=majority";
 mongoose.connect(dbURI)
     .then ((result) => app.listen(3000))
     .catch((err) => console.log(err));
